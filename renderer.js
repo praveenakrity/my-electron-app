@@ -1,6 +1,7 @@
 const hi = document.getElementById('hi');
 hi.innerText = electron.sayHi('Keshav');
 const bBtn = document.getElementById('submit_book');
+const openLink = document.getElementById('openLink')
 
 const openFile = document.getElementById('openFile')
 
@@ -27,6 +28,9 @@ const showNames = () => {
 }
 
 showNames()
+
+openLink.addEventListener('click',()=>{
+})
 
 bBtn.addEventListener('click',getBookClub)
 

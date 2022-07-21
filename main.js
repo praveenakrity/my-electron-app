@@ -4,6 +4,65 @@ const { app, BrowserWindow, Menu, ipcMain, dialog, webContents } = require('elec
 require('electron-reload')(__dirname);
 const path = require('path')
 
+//for macOS
+const isMac = process.platform === 'darwin'
+
+menuTemplate = [
+{
+    label: 'File',
+    submenu: [{
+      label: 'Add Item',
+    },
+    {
+      label: 'Clear Items',
+    },
+    {
+      label: 'Quit',
+      accelerator: 'CmdOrCtrl+Q',
+      click: () => {
+        app.quit()
+      }
+    }
+  ],
+  },
+  {
+    label: 'Edit',
+    submenu: [
+      {
+        label: "Cut"
+      },
+      {
+        label: "Copy"
+      },
+      {
+        label: "Paste"
+      },
+      {
+        type: "separator"
+      },
+      {
+        label: "Delete"
+      }
+  ]
+  },
+  {
+    label: 'View',
+    submenu: [{
+      label: "View Page"
+    },
+    {
+      label: "View User details"
+    },{
+      label: "View Page in Read-Mode"
+    }
+  ]
+  }
+]
+
+isMac ? menuTemplate.unshift({label:''}) : null
+const mainMenu = Menu.buildFromTemplate(menuTemplate)
+Menu.setApplicationMenu(mainMenu)
+
 const createWindow = () => {
     //creating new browser window instance using BrowserWindow class
     //specifying width and height of the window
@@ -26,19 +85,6 @@ const createWindow = () => {
         else
           return filePaths[0]
       })
-
-
-      ipcMain.handle('newWin',() => {
-        const win = new BrowserWindow({
-          width: 800,
-          height: 600,
-          webPreferences: {
-            devTools: true,
-            preload: path.join(__dirname, 'preload.js')
-          }
-        })
-        win.loadURL('new.html')
-      })
       
       //saying to the win object that load this HTML file to the window
       win.loadFile('index.html')
@@ -58,31 +104,7 @@ app.whenReady().then(() => {
 });
 
 //Defining Menu
-menuTemplate = [
-  {
-    label: 'File',
-    submenu: [{
-      label: 'Add Item',
-    },
-    {
-      label: 'Clear Items',
-    },
-    {
-      label: 'Quit',
-      accelerator: 'CmdOrCtrl+Q',
-      click: () => {
-        app.quit()
-      }
-    }
-  ]
-  },
-  {
-    label: 'Edit'
-  },
-  {
-    label: 'View'
-  },
-]
+
 
 //View this in Terminal
 // console.log(`Hello from Electron 👋`)
