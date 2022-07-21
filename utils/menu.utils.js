@@ -1,4 +1,5 @@
-menuTemplate = [
+function menutemplate(app) {
+  return menuTemplate = [
     {
         label: 'File',
         submenu: [{
@@ -49,7 +50,9 @@ menuTemplate = [
       ]
       }
     ]
+}
+
 
     module.exports = {
-        menuTemplate
+      menutemplate
     }
