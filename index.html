@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>First Electron App</title>
+</head>
+<body>
+    <h1><span id="name"></span>&nbsp;says Hello to Electron</h1>
+    <article>
+        Electron looks for the main.js for the main process.
+    </article>
+    <article>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+</article>
+<p id="hi"></p>
+
+<div id="app"></div>
+<input id='bookName' placeholder="Book name"/>
+<button id="submit_book">Submit Book</button>
+<ul id="bookClub">
+    
+</ul>
+<button id="new-win">Open New Window</button>
+<button id="openFile">Open File</button>
+<p id="filename"></p>
+<script src="./renderer.js"></script>
+</body>
+</html>
