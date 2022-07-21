@@ -1,0 +1,19 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "Hello Electron",
+  "//": "main.js is where your app starts. See http://electron.atom.io/docs/tutorial/first-app/",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Praveen",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^19.0.8"
+  },
+  "dependencies": {
+    "electron-reload": "^2.0.0-alpha.1"
+  }
+}
